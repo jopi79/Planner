@@ -15,7 +15,7 @@ import javax.enterprise.context.RequestScoped;
 
 /**
  *
- * @author Student
+ * @author jopi79
  */
 @Named(value = "dateBean")
 @RequestScoped

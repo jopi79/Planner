@@ -2,19 +2,41 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
 
     <body>
 
         <ui:composition >
 
-            
-                <p:accordionPanel>
-                    <p:tab title="Priorytety:"></p:tab>
-                    <p:tab title="Można pominąć:"></p:tab>
-                    <p:tab title="Uwagi:"></p:tab>
-                </p:accordionPanel>
-            
+            <p:accordionPanel  multiple="true">
+                <p:tab title="Priorytety:">
+                    <h:form>
+                        
+                        1   <p:inputText value="#{dayBean.important1}" />
+                        <p:commandButton ajax="false" value="Przenieś do nieważnych" />
+                        <br/>
+                        
+                        2   <p:inputText value="#{dayBean.important2}" />
+                        <p:commandButton ajax="false" value="Przenieś do nieważnych" /><br/>
+                        
+                        3   <p:inputText value="#{dayBean.important3}" />
+                        <p:commandButton ajax="false" value="Przenieś do nieważnych" /><br/>
+                        <p:commandButton ajax="false" value="Zapisz" />
+                    </h:form>
+                </p:tab>
+                <p:tab title="Można pominąć:">
+                    
+                    <h:form>
+                        <p:commandButton ajax="false" value="Dodaj" />
+                    </h:form>
+                    
+                </p:tab>
+                <p:tab title="Uwagi:">
+                    
+                    
+                </p:tab>
+            </p:accordionPanel>
 
         </ui:composition>
 
