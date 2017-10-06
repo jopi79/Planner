@@ -7,6 +7,8 @@
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -15,8 +17,8 @@ import java.io.Serializable;
 @Named(value = "dayBean")
 @SessionScoped
 public class DayBean implements Serializable {
-    private String important1, important2, important3;
-    private String additional1, additional2, additional3;
+    private String important1, important2, important3, additionalNote;
+    private List<String> additional = new ArrayList();
 
     public String getImportant1() {
         return important1;
@@ -42,35 +44,35 @@ public class DayBean implements Serializable {
         this.important3 = important3;
     }
 
-    public String getAdditional1() {
-        return additional1;
+    public List<String> getAdditional() {
+        return additional;
     }
 
-    public void setAdditional1(String additional1) {
-        this.additional1 = additional1;
+    public String getAdditionalNote() {
+        return additionalNote;
     }
 
-    public String getAdditional2() {
-        return additional2;
+    public void setAdditionalNote(String additionalNote) {
+        this.additionalNote = additionalNote;
     }
 
-    public void setAdditional2(String additional2) {
-        this.additional2 = additional2;
-    }
-
-    public String getAdditional3() {
-        return additional3;
-    }
-
-    public void setAdditional3(String additional3) {
-        this.additional3 = additional3;
+    public String addAdditional()
+    {
+        additional.add(additionalNote);
+        return null;
     }
     
-
+    public String moveToAdditional()
+    {
+        return null;
+    }
+    
     /**
      * Creates a new instance of DayBean
      */
     public DayBean() {
+        additional.add("afsadf");
+        additional.add("sgd");
     }
     
 }

@@ -12,29 +12,42 @@
             <p:accordionPanel  multiple="true">
                 <p:tab title="Priorytety:">
                     <h:form>
-                        
+
                         1   <p:inputText value="#{dayBean.important1}" />
                         <p:commandButton ajax="false" value="Przenieś do nieważnych" />
                         <br/>
-                        
+
                         2   <p:inputText value="#{dayBean.important2}" />
                         <p:commandButton ajax="false" value="Przenieś do nieważnych" /><br/>
-                        
+
                         3   <p:inputText value="#{dayBean.important3}" />
                         <p:commandButton ajax="false" value="Przenieś do nieważnych" /><br/>
-                        <p:commandButton ajax="false" value="Zapisz" />
+                        <p:commandButton  value="Zapisz" />
                     </h:form>
                 </p:tab>
                 <p:tab title="Można pominąć:">
-                    
-                    <h:form>
-                        <p:commandButton ajax="false" value="Dodaj" />
-                    </h:form>
+                    <ui:repeat value="#{dayBean.additional}" var="note" >
+                            <li>#{note}</li>
+                        </ui:repeat>
                     
                 </p:tab>
+<!--                <p:tab title="Można pominąć:">
+                    <ol>
+                        <ui:repeat value="#{dayBean.additional}" var="note" >
+                            <li>#{note}</li>
+                        </ui:repeat>
+                        <li>
+                            <h:form>
+                                <p:inputText value="#{dayBean.additionalNote}" />
+                                <p:commandButton ajax="false" value="#{dayBean.addAdditional}" />
+                            </h:form>
+                        </li>
+                    </ol>
+
+                </p:tab>-->
                 <p:tab title="Uwagi:">
-                    
-                    
+
+
                 </p:tab>
             </p:accordionPanel>
 
