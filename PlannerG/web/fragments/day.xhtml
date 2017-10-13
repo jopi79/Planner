@@ -9,7 +9,7 @@
 
         <ui:composition >
 
-            <p:accordionPanel  multiple="true">
+            <p:accordionPanel  multiple="true" activeIndex="0,1">
                 <p:tab title="Priorytety:">
                     <h:form>
 
@@ -25,26 +25,31 @@
                         <p:commandButton  value="Zapisz" />
                     </h:form>
                 </p:tab>
-                <p:tab title="Można pominąć:">
+                <p:tab title="Można pominąć:" >
                     <ui:repeat value="#{dayBean.additional}" var="note" >
-                            <li>#{note}</li>
-                        </ui:repeat>
-                    
-                </p:tab>
-<!--                <p:tab title="Można pominąć:">
-                    <ol>
-                        <ui:repeat value="#{dayBean.additional}" var="note" >
-                            <li>#{note}</li>
-                        </ui:repeat>
-                        <li>
-                            <h:form>
-                                <p:inputText value="#{dayBean.additionalNote}" />
-                                <p:commandButton ajax="false" value="#{dayBean.addAdditional}" />
-                            </h:form>
-                        </li>
-                    </ol>
+                        <li>#{note}</li>
+                    </ui:repeat>
 
-                </p:tab>-->
+                    <h:form>
+                        <p:inputText value="#{dayBean.additionalNote}" />
+                        <p:commandButton ajax="false"  value="Dodaj" action="#{dayBean.addAdditional}"/>
+                    </h:form>
+                </p:tab>
+                <!--                <p:tab title="Można pominąć:">
+                                    <ol>
+                                        <ui:repeat value="#{dayBean.additional}" var="note" >
+                                            <li>#{note}</li>
+                                        </ui:repeat>
+                                        <li>
+                                            <h:form>
+                                                
+                        <p:commandButton ajax="false" value="#{dayBean.addAdditional}" />
+                                                
+                                            </h:form>
+                                        </li>
+                                    </ol>
+                
+                                </p:tab>-->
                 <p:tab title="Uwagi:">
 
 

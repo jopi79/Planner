@@ -9,7 +9,7 @@
     </h:head>
     <h:body>
         <h3>Mój planer</h3>
-        <p:tabView>
+        <p:tabView dynamic="true" cache="false" activeIndex="2" >
             <p:tab title="Miesiąc">
                 <p:calendar id="inline" value="#{dateBean.today}" mode="inline" />
             </p:tab>
