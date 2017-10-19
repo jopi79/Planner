@@ -9,6 +9,7 @@ import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.event.ValueChangeEvent;
 
 /**
  *
@@ -17,7 +18,8 @@ import java.util.List;
 @Named(value = "dayBean")
 @SessionScoped
 public class DayBean implements Serializable {
-    private String important1, important2, important3, additionalNote;
+
+    private String important1 = "1 zadanie", important2 = "2 zadanie", important3 = "3 zadanie", additionalNote;
     private List<String> additional = new ArrayList();
 
     public String getImportant1() {
@@ -56,17 +58,42 @@ public class DayBean implements Serializable {
         this.additionalNote = additionalNote;
     }
 
-    public String addAdditional()
-    {
+    public String addAdditional() {
         additional.add(additionalNote);
+        additionalNote="";
         return null;
     }
-    
-    public String moveToAdditional()
+
+    public String moveToAdditional1() {
+        additional.add(important1);
+        important1 = "1 zadanie";
+        return null;
+    }
+    public String moveToAdditional2() {
+        additional.add(important2);
+        important2 = "2 zadanie";
+        return null;
+    }
+    public String moveToAdditional3() {
+        additional.add(important3);
+        important2 = "3 zadanie";
+        return null;
+    }
+
+    public String delete(String note)
     {
+        additional.remove(note);
         return null;
     }
     
+    
+    public void noteChanged(ValueChangeEvent event) {
+        Object oldValue = event.getOldValue();
+        Object newValue = event.getNewValue();
+        int index = additional.indexOf(oldValue);
+        additional.set(index, (String) newValue);
+    }
+
     /**
      * Creates a new instance of DayBean
      */
@@ -74,5 +101,5 @@ public class DayBean implements Serializable {
         additional.add("afsadf");
         additional.add("sgd");
     }
-    
+
 }

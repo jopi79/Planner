@@ -9,7 +9,7 @@
     </h:head>
     <h:body>
         <h3>Mój planer</h3>
-        <p:tabView dynamic="true" cache="false" activeIndex="2" >
+        <p:tabView dynamic="true" cache="false" activeIndex="2" id="tabView" >
             <p:tab title="Miesiąc">
                 <p:calendar id="inline" value="#{dateBean.today}" mode="inline" />
             </p:tab>
@@ -24,8 +24,8 @@
                     <p:panel header="#{dateBean.getDayOfWeek(7)}" footer="#{dateBean.getFooter(7)}"></p:panel>
                 </h:panelGrid>
             </p:tab>
-            <p:tab title="Dzień"> 
-                <p:panel>
+            <p:tab title="Dzień" id="dayTab"> 
+                <p:panel id="dayPanel">
                     Dziś jest ... #{dateBean.todayFormatted}
                     
                     <ui:include src="/fragments/day.xhtml" />
