@@ -3,36 +3,51 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <f:metadata >
+        <f:viewParam name="i" value="#{indexBean.index}"/>
+    </f:metadata>
+
     <h:head>
-        <title>Facelet Title</title>
+        <title>Planer</title>
     </h:head>
     <h:body>
         <h3>Mój planer</h3>
-        <p:tabView dynamic="true" cache="false" activeIndex="2" id="tabView" >
-            <p:tab title="Miesiąc">
-                <p:calendar id="inline" value="#{dateBean.today}" mode="inline" />
-            </p:tab>
-            <p:tab title="Tydzień">
-                <h:panelGrid columns="7" >
-                    <p:panel header="#{dateBean.getDayOfWeek(1)}" footer="#{dateBean.getFooter(1)}"></p:panel>
-                    <p:panel header="#{dateBean.getDayOfWeek(2)}" footer="#{dateBean.getFooter(2)}" ></p:panel>
-                    <p:panel header="#{dateBean.getDayOfWeek(3)}" footer="#{dateBean.getFooter(3)}"></p:panel>
-                    <p:panel header="#{dateBean.getDayOfWeek(4)}" footer="#{dateBean.getFooter(4)}"></p:panel>
-                    <p:panel header="#{dateBean.getDayOfWeek(5)}" footer="#{dateBean.getFooter(5)}"></p:panel>
-                    <p:panel header="#{dateBean.getDayOfWeek(6)}" footer="#{dateBean.getFooter(6)}"></p:panel>
-                    <p:panel header="#{dateBean.getDayOfWeek(7)}" footer="#{dateBean.getFooter(7)}"></p:panel>
-                </h:panelGrid>
-            </p:tab>
-            <p:tab title="Dzień" id="dayTab"> 
-                <p:panel id="dayPanel">
-                    Dziś jest ... #{dateBean.todayFormatted}
-                    
+        <p:layout style="min-width:400px;min-height:200px;">
+            <p:layoutUnit position="west" resizable="true" size="100" minSize="40" maxSize="200">
+                <p:link value="Miesiąc" outcome="/index.xhtml?i=0" /><br/>
+                <p:link value="Tydzień" outcome="/index.xhtml?i=1" /><br/>
+                <p:link value="Dzień" outcome="/index.xhtml?i=2" /><br/>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center">
+                <h:panelGroup   rendered="#{indexBean.index==0}">
+                    <ui:include src="/fragments/month.xhtml" />
+                </h:panelGroup>
+                <h:panelGroup   rendered="#{indexBean.index==1}">
+                    <ui:include src="/fragments/week.xhtml" />
+                </h:panelGroup>
+                <h:panelGroup  rendered="#{indexBean.index==2}">
                     <ui:include src="/fragments/day.xhtml" />
-                    
-                </p:panel>
-            </p:tab>
-        </p:tabView>
+                </h:panelGroup>
+            </p:layoutUnit>
+        </p:layout>
+        <!--
+        <p:tabMenu activeIndex="#{indexBean.index}">
+            <p:menuitem value="Miesiąc" outcome="index" icon="ui-icon-star">
+                <f:param name="i" value="0" />
+            </p:menuitem>
+            <p:menuitem value="Tydzień" outcome="index" icon="ui-icon-search">
+                <f:param name="i" value="1" />
+            </p:menuitem>
+            <p:menuitem value="Dzień" outcome="index" icon="ui-icon-document">
+                <f:param name="i" value="2" />
+            </p:menuitem>
+        </p:tabMenu>
+        -->
+
+
     </h:body>
 </html>
 

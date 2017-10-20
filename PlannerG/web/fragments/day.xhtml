@@ -8,9 +8,9 @@
     <body>
 
         <ui:composition >
+            <h:panelGrid columns="2" style="width: 100%">
+                <p:panel  id="mainPanel" header="Zadania" >
 
-            <p:accordionPanel  multiple="true" activeIndex="0,1,2" id="mainPanel">
-                <p:tab title="Priorytety:" id="prio">
                     <h:form id="form1">
 
                         1   
@@ -19,7 +19,7 @@
                         </p:inplace>
                         <p:commandLink  value=" Przenieś do nieważnych" 
                                         ajax="false"
-                                        update=":tabView:mainPanel:additional,inplace1"
+
                                         action="#{dayBean.moveToAdditional1()}"/>
                         <br/>
                     </h:form>
@@ -28,7 +28,9 @@
                         <p:inplace id="inplace2" editor="true" >
                             <p:inputText value="#{dayBean.important2}"  required="true" label="text2"/>
                         </p:inplace>
-                        <p:commandLink  value=" Przenieś do nieważnych" update=":tabView:mainPanel:additional,inplace2"
+                        <p:commandLink  value=" Przenieś do nieważnych" 
+                                        ajax="false"
+
                                         action="#{dayBean.moveToAdditional2()}"/>
                     </h:form>
                     <h:form>
@@ -36,13 +38,15 @@
                         <p:inplace id="inplace3" editor="true" >
                             <p:inputText value="#{dayBean.important3}"  required="true" label="text3"/>
                         </p:inplace>
-                        <p:commandLink  value=" Przenieś do nieważnych" update=":tabView:mainPanel:additional,inplace3"
+                        <p:commandLink  value=" Przenieś do nieważnych" 
+                                        ajax="false"
+
                                         action="#{dayBean.moveToAdditional3()}"/>
                         <!--       
                                <p:commandButton  value="Zapisz" />-->
                     </h:form>
-                </p:tab>
-                <p:tab title="Można pominąć:" id="additional">
+                </p:panel>
+                <p:panel  id="additional" header="Zadania dodatkowe">
                     <ul>
                         <ui:repeat value="#{dayBean.additional}" var="note" >
                             <li>
@@ -51,7 +55,8 @@
                                         <p:inputText value="#{note}" required="true" label="text4"
                                                      valueChangeListener="#{dayBean.noteChanged}"/>
                                     </p:inplace>
-                                    <p:commandLink value=" Usuń" update=":tabView:mainPanel:additional"
+                                    <p:commandLink value=" Usuń" 
+
                                                    ajax="false"
                                                    action="#{dayBean.delete(note)}" />
                                 </h:form>
@@ -61,10 +66,9 @@
 
                     <h:form>
                         <p:inputText value="#{dayBean.additionalNote}" />
-                        <p:commandButton ajax="false"  value="Dodaj" action="#{dayBean.addAdditional}"/>
+                        <p:commandButton  ajax="false" value="Dodaj" action="#{dayBean.addAdditional}"/>
                     </h:form>
-                </p:tab>
-                <p:tab title="Można pominąć - wersja 2">
+                
                     <ui:repeat value="#{dayBean.additional}" var="note" >
                         <p:panel id="pnl" header="Zadanie" style="width: 25%">
                             <h:outputText value="#{note}" />
@@ -73,8 +77,8 @@
                         <p:resizable for="pnl" />
                     </ui:repeat>
 
-                </p:tab>
-            </p:accordionPanel>
+                </p:panel>
+            </h:panelGrid>
 
         </ui:composition>
 

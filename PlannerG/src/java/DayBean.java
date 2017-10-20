@@ -13,7 +13,7 @@ import javax.faces.event.ValueChangeEvent;
 
 /**
  *
- * @author Student
+ * @author jopi79
  */
 @Named(value = "dayBean")
 @SessionScoped
